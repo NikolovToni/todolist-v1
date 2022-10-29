@@ -6,20 +6,20 @@ const app = express();
 app.set("view engine", "ejs");
 
 app.get("/", function(req, res){
- let weekDays = [
-    "Sunday",
-    "Monday",
-    "Tuesday",
-    "Wednesday",
-    "Thursday",
-    "Friday",
-    "Saturday"
- ];
 
- let today = new Date();
- let currentDay = today.getDay();
+    let today = new Date();
 
- res.render("list", {kindOfDay: weekDays[currentDay]});
+    let options = {
+        weekday: "long",
+        day: "numeric",
+        month: "long"
+    };
+
+    let day = today.toLocaleDateString("en-US", options);
+
+    res.render("list", {
+        kindOfDay: day
+    });
 
 });
 
