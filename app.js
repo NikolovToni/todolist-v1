@@ -19,7 +19,7 @@ app.get("/", function(req, res){
  let today = new Date();
  let currentDay = today.getDay();
 
- res.send(`<h1>Its ${weekDays[currentDay]}!</h1>`)
+ res.render("list", {kindOfDay: weekDays[currentDay]});
 
 });
 
